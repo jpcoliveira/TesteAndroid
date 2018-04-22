@@ -5,6 +5,7 @@ import jpcoliveira.com.br.testeandroid.base.BaseView
 interface FundContract {
 
     interface Presenter {
+        fun getFunds()
 
     }
 
