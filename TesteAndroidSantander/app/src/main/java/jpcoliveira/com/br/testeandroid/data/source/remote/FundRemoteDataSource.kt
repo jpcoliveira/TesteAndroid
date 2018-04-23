@@ -1,6 +1,5 @@
 package jpcoliveira.com.br.testeandroid.data.source.remote
 
-import jpcoliveira.com.br.testeandroid.fund.model.Fund
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

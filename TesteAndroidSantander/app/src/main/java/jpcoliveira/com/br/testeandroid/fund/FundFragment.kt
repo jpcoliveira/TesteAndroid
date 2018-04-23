@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jpcoliveira.com.br.testeandroid.R
-import jpcoliveira.com.br.testeandroid.fund.model.Fund
 
 class FundFragment : Fragment(), FundContract.View {
 

@@ -1,4 +1,6 @@
 package jpcoliveira.com.br.testeandroid.fund.model
 
-class Fund(val a: Nothing, val b: Nothing) {
-}
+import com.google.gson.annotations.SerializedName
+
+data class Fund(@SerializedName("screen")
+                     val screen: Screen)

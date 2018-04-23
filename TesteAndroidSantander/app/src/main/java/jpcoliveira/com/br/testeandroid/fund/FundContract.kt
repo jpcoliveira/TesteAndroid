@@ -1,7 +1,6 @@
 package jpcoliveira.com.br.testeandroid.fund
 
 import jpcoliveira.com.br.testeandroid.base.BaseView
-import jpcoliveira.com.br.testeandroid.fund.model.Fund
 
 interface FundContract {
 
