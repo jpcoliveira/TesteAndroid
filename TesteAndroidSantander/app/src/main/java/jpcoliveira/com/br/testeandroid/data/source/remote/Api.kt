@@ -10,5 +10,5 @@ interface Api {
     fun getFieldsForBuildForm(): List<Any>?
 
     @GET("fund.json")
-    fun getFund(): Call<Fund>
+    fun getFund(): Call<Fund>?
 }

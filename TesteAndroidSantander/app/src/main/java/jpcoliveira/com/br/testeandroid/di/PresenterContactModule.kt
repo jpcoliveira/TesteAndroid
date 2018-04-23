@@ -6,7 +6,7 @@ import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.singleton
 import jpcoliveira.com.br.testeandroid.contact.ContactPresenter
 import jpcoliveira.com.br.testeandroid.data.source.ContactRepository
-import jpcoliveira.com.br.testeandroid.data.source.remote.ContactRemote
+import jpcoliveira.com.br.testeandroid.data.source.remote.ContactRemoteDataSource
 
 val presenterContactModule = Kodein.Module {
 
@@ -18,7 +18,7 @@ val presenterContactModule = Kodein.Module {
         ContactRepository(instance())
     }
 
-    bind<ContactRemote>() with singleton {
-        ContactRemote(instance())
+    bind<ContactRemoteDataSource>() with singleton {
+        ContactRemoteDataSource(instance())
     }
 }

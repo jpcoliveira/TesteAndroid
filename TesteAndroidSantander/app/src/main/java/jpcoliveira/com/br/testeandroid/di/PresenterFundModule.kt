@@ -5,7 +5,7 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.singleton
 import jpcoliveira.com.br.testeandroid.data.source.FundRepository
-import jpcoliveira.com.br.testeandroid.data.source.remote.FundRemote
+import jpcoliveira.com.br.testeandroid.data.source.remote.FundRemoteDataSource
 import jpcoliveira.com.br.testeandroid.fund.FundPresenter
 
 val presenterFundModule = Kodein.Module {
@@ -18,7 +18,7 @@ val presenterFundModule = Kodein.Module {
         FundRepository(instance())
     }
 
-    bind<FundRemote>() with singleton {
-        FundRemote(instance())
+    bind<FundRemoteDataSource>() with singleton {
+        FundRemoteDataSource(instance())
     }
 }

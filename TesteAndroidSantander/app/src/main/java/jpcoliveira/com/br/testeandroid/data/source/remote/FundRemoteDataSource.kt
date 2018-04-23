@@ -5,10 +5,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FundRemote(val api: Api) {
+class FundRemoteDataSource(val api: Api) {
 
     fun getFund(success: (fund: Fund?) -> Unit, failure: (throwable: Throwable?) -> Unit) {
-        api.getFund().enqueue(object : Callback<Fund> {
+        api.getFund()?.enqueue(object : Callback<Fund> {
             override fun onResponse(call: Call<Fund>?, response: Response<Fund>?) {
                 success(response?.body())
             }
