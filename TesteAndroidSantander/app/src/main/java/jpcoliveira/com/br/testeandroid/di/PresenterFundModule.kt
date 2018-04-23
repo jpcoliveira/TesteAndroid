@@ -12,7 +12,7 @@ import jpcoliveira.com.br.testeandroid.fund.FundPresenter
 val presenterFundModule = Kodein.Module {
 
     bind<FundPresenter>() with singleton {
-        FundPresenter(instance(), instance(), instance())
+        FundPresenter(instance(), instance())
     }
 
     bind<FundRepository>() with singleton {
