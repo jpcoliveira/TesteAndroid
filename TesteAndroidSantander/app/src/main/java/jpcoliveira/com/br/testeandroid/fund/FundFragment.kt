@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jpcoliveira.com.br.testeandroid.R
+import jpcoliveira.com.br.testeandroid.fund.model.Fund
 
 class FundFragment : Fragment(), FundContract.View {
 
@@ -35,6 +36,6 @@ class FundFragment : Fragment(), FundContract.View {
     }
 
     companion object {
-        val TAG = FundFragment.javaClass.simpleName
+        val TAG = FundFragment::class.java.simpleName
     }
 }

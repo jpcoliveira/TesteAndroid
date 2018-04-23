@@ -2,7 +2,9 @@ package jpcoliveira.com.br.testeandroid.fund
 
 import jpcoliveira.com.br.testeandroid.data.source.FundRepository
 
-class FundPresenter(val repository: FundRepository?, val view: FundContract.View?) : FundContract.Presenter {
+class FundPresenter(val repository: FundRepository?,
+                    val view: FundContract.View?)
+    : FundContract.Presenter {
 
     init {
         view?.setPresenter(this)
@@ -10,11 +12,11 @@ class FundPresenter(val repository: FundRepository?, val view: FundContract.View
 
     override fun getFund() {
         repository?.getFund(
-                success = {
-                    fund -> view?.showFund(fund)
+                success = { fund ->
+                    view?.showFund(fund)
                 },
-                failure = {
-                    throwable -> view?.showMessageError(throwable?.message)
+                failure = { throwable ->
+                    view?.showMessageError(throwable?.message)
                 }
         )
     }
