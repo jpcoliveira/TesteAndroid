@@ -2,10 +2,12 @@ package jpcoliveira.com.br.testeandroid.fund
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jpcoliveira.com.br.testeandroid.R
+import jpcoliveira.com.br.testeandroid.fund.model.Fund
 
 class FundFragment : Fragment(), FundContract.View {
 
@@ -22,6 +24,18 @@ class FundFragment : Fragment(), FundContract.View {
 
     override fun onResume() {
         super.onResume()
-        presenter.getFunds()
+        presenter.getFund()
+    }
+
+    override fun showFund(fund: Fund?) {
+        Log.i(TAG, "showFund " + fund.toString())
+    }
+
+    override fun showMessageError(message: String?) {
+        Log.i(TAG, "showMessageError " + message)
+    }
+
+    companion object {
+        val TAG = FundFragment.javaClass.simpleName
     }
 }

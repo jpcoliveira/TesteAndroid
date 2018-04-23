@@ -1,5 +1,7 @@
 package jpcoliveira.com.br.testeandroid.data.source.remote
 
+import jpcoliveira.com.br.testeandroid.fund.model.Fund
+import retrofit2.Call
 import retrofit2.http.GET
 
 interface Api {
@@ -8,5 +10,5 @@ interface Api {
     fun getFieldsForBuildForm(): List<Any>?
 
     @GET("fund.json")
-    fun getFunds(): List<Any>?
+    fun getFund(): Call<Fund>
 }
