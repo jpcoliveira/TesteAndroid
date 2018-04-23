@@ -19,7 +19,7 @@ class FundFragment : Fragment(), FundContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_fund, container, false)
-
+        activity?.setTitle(activity?.getString(R.string.funds))
         return view
     }
 
