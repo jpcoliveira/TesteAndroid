@@ -7,7 +7,7 @@
 
     <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="android:background">@color/santander_default</item>
-        <item name="tabBackground">@drawable/tablayout_selector</item>
+        <item name="tabBackground">@drawable/selector_tablayout</item>
         <item name="tabIndicatorColor">@color/santander_opacity</item>
         <item name="tabSelectedTextColor">@android:color/white</item>
         <item name="tabTextAppearance">@android:style/TextAppearance.Widget.TabWidget</item>

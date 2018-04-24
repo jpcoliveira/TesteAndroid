@@ -7,4 +7,6 @@
     <color name="santander_default">#DA0101</color>
     <color name="santander_opacity">#be140d</color>
     <color name="santander_button_pressed">#ca6564</color>
+
+    <color name="santander_gray">#7E7E7E</color>
 </resources>
