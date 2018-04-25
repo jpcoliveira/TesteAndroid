@@ -9,4 +9,10 @@
     <color name="santander_button_pressed">#ca6564</color>
 
     <color name="santander_gray">#7E7E7E</color>
+
+    <color name="very_high_risk">#FF3634</color>
+    <color name="high_risk">#FF742C</color>
+    <color name="moderate_risk">#FFC011</color>
+    <color name="low_risk">#4AC16C</color>
+    <color name="very_low_risk">#74DA61</color>
 </resources>

@@ -15,20 +15,20 @@ class RiskLayout(context: Context, attrs: AttributeSet?) : LinearLayout(context,
         LayoutInflater.from(context).inflate(R.layout.custom_layout_investment_risk, this)
     }
 
-    fun setRiskInfo(valueRisk: Int) {
+    fun selectRisk(valueRisk: Int) {
 
         when (valueRisk) {
-            0 -> setRiskIndicator(risk1, imageRisk1)
-            1 -> setRiskIndicator(risk2, imageRisk2)
-            2 -> setRiskIndicator(risk3, imageRisk3)
-            3 -> setRiskIndicator(risk4, imageRisk4)
-            4 -> setRiskIndicator(risk5, imageRisk5)
+            0 -> updateRisk(veryLowRisk, imageVeryLowRisk)
+            1 -> updateRisk(lowRisk, imageLowRisk)
+            2 -> updateRisk(moderateRisk, imageModerateRisk)
+            3 -> updateRisk(highRisk, imageHighRisk)
+            4 -> updateRisk(veryHighRisk, imageVeryHighRisk)
         }
     }
 
-    fun setRiskIndicator(risk: View, image: ImageView) {
+    fun updateRisk(risk: View, image: ImageView) {
         val params = risk.layoutParams
-        params.height = 40
+        params.height = context.resources.getDimension(R.dimen.risk_selected) as Int
         risk.layoutParams = params
         image.visibility = View.VISIBLE
     }
