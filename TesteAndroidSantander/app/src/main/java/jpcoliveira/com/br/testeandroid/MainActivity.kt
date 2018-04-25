@@ -14,7 +14,10 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(toolbar)
+
         val adapter = TabAdapter(supportFragmentManager, this, kodein)
+
         viewpager.adapter = adapter
 
         viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -27,9 +30,10 @@ class MainActivity : AppCompatActivity(), KodeinAware {
             }
 
             override fun onPageSelected(position: Int) {
-                setTitle(adapter.getPageTitle(position))
+                toolbar_title.text = adapter.getPageTitle(position)
             }
         })
+        toolbar_title.text = adapter.getPageTitle(0)
         tabLayout.setupWithViewPager(viewpager)
     }
 }

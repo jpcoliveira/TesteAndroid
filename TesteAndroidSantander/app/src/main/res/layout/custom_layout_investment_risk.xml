@@ -42,12 +42,12 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_keyboard_arrow_down_white_24dp"
             android:tint="@color/santander_gray"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <View
             android:id="@+id/lowRisk"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/risk"
+            android:layout_height="@dimen/risk_selected"
             android:background="@color/low_risk" />
     </LinearLayout>
 

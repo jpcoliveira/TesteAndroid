@@ -10,7 +10,7 @@ import jpcoliveira.com.br.testeandroid.fund.model.Fund
 
 class FundFragment : Fragment(), FundContract.View {
 
-    private lateinit var presenter: FundContract.Presenter
+    private var presenter: FundContract.Presenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +18,7 @@ class FundFragment : Fragment(), FundContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_fund, container, false)
-        activity?.setTitle(activity?.getString(R.string.funds))
-        return view
+        return inflater.inflate(R.layout.fragment_fund, container, false)
     }
 
     override fun setPresenter(presenter: FundContract.Presenter) {
@@ -29,7 +27,7 @@ class FundFragment : Fragment(), FundContract.View {
 
     override fun onResume() {
         super.onResume()
-        presenter.getFund()
+        presenter?.getFund()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {

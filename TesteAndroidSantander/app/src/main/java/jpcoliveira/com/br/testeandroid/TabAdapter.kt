@@ -40,7 +40,7 @@ class TabAdapter(fragmentManager: FragmentManager, val context: Context, val kod
     override fun getPageTitle(position: Int) =
             when (fragments[position]) {
                 is ContactFragment -> context.getString(R.string.contact)
-                is FundFragment -> context.getString(R.string.funds)
+                is FundFragment -> context.getString(R.string.investiment)
                 else -> ""
             }
 }

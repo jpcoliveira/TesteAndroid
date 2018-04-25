@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="risk">10dp</dimen>
-    <dimen name="risk_selected">30dp</dimen>
+    <dimen name="risk_selected">15dp</dimen>
     <dimen name="risk_corner_radius">5dp</dimen>
     <dimen name="risk_margin">2dp</dimen>
     <dimen name="default_elevation">4dp</dimen>
+
+    <dimen name="large_font_size"></dimen>
+    <dimen name="middle_font_size"></dimen>
+    <dimen name="small_font_size"></dimen>
 </resources>
