@@ -22,6 +22,7 @@
         <item name="android:background">@android:color/white</item>
     </style>
 
+    <!-- Style of button-->
     <style name="CustomButton" parent="">
         <item name="android:background">@drawable/selector_button</item>
         <item name="android:textColor">@android:color/white</item>

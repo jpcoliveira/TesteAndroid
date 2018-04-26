@@ -7,4 +7,4 @@ data class MoreInfo(@SerializedName("month")
                     @SerializedName("year")
                     val year: Year,
                     @SerializedName("12months")
-                    val Months: Months)
+                    val months: Months)

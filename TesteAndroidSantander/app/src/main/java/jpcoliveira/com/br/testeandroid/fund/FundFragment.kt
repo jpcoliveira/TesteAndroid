@@ -2,11 +2,13 @@ package jpcoliveira.com.br.testeandroid.fund
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.*
 import android.widget.Toast
 import jpcoliveira.com.br.testeandroid.R
 import jpcoliveira.com.br.testeandroid.fund.model.Fund
+import kotlinx.android.synthetic.main.fragment_fund.*
 
 class FundFragment : Fragment(), FundContract.View {
 
@@ -19,6 +21,11 @@ class FundFragment : Fragment(), FundContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_fund, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recyclerViewFund.layoutManager = LinearLayoutManager(activity)
     }
 
     override fun setPresenter(presenter: FundContract.Presenter) {
@@ -45,8 +52,25 @@ class FundFragment : Fragment(), FundContract.View {
     }
 
     override fun showFund(fund: Fund?) {
-        Log.i(TAG, "showFund " + fund.toString())
+        title.text = fund?.screen?.title
+        fund_name.text = fund?.screen?.fundName
+        what_is.text = fund?.screen?.whatIs
+        definition.text = fund?.screen?.definition
+        more_info.setInfoTitle(fund?.screen?.infoTitle)
+        more_info.setMoreInfo(fund?.screen?.moreInfo)
+        risk_title.text = fund?.screen?.riskTitle
+        risk.selectRisk(fund?.screen?.risk!!)
+        val infoList = fund.screen.info!! + fund.screen.downInfo!!
+        recyclerViewFund.adapter = InfoAdapter(infoList)
     }
+
+    operator fun <T> List<T>.plus(list: List<T>): List<T> {
+        var mutable: MutableList<T>
+        mutable = this.toMutableList()
+        mutable.addAll(list)
+        return mutable
+    }
+
 
     override fun showMessageError(message: String?) {
         Log.i(TAG, "showMessageError " + message)

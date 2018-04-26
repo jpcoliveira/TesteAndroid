@@ -17,7 +17,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:text="Fundos de Investimento"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -25,15 +24,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fundName"
+            android:id="@+id/fund_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-
             android:gravity="center"
-            android:text="Vinci Valorem FI Multimercado"
             android:textColor="#000000"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -48,20 +45,20 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="16dp"
+            android:contentDescription="@string/divider"
             android:src="@drawable/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fundName" />
+            app:layout_constraintTop_toBottomOf="@+id/fund_name" />
 
         <TextView
-            android:id="@+id/whatIs"
+            android:id="@+id/what_is"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:text="O que é?"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,28 +72,26 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:gravity="center"
-            android:text="O Fundo tem por objetivo proporcionar aos seus cotistas rentabilidade no longo prazo através de investimentos"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/whatIs" />
+            app:layout_constraintTop_toBottomOf="@+id/what_is" />
 
         <TextView
-            android:id="@+id/riskTitle"
+            android:id="@+id/risk_title"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="52dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:text="Grau de risco do investimento"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/definition" />
 
-        <jpcoliveira.com.br.testeandroid.customView.RiskLayout
-            android:id="@+id/linearLayout"
+        <jpcoliveira.com.br.testeandroid.customView.RiskView
+            android:id="@+id/risk"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -104,40 +99,38 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/riskTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/risk_title" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
+        <jpcoliveira.com.br.testeandroid.customView.MoreInfoView
+            android:id="@+id/more_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
-            android:layout_marginEnd="8dp"
-            android:gravity="center"
-            android:text="Mais informacoes sobre o investimento "
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/risk" />
 
         <ImageView
             android:id="@+id/divider_more_info"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:contentDescription="@string/divider"
             android:src="@drawable/divider_more_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewMoreInformation" />
+            app:layout_constraintTop_toBottomOf="@+id/more_info" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewFund"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -145,28 +138,20 @@
             app:layout_constraintTop_toBottomOf="@+id/divider_more_info"
             app:layout_constraintVertical_bias="0.0" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewMoreInformation"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
         <Button
-            android:id="@+id/btnInvest"
+            android:id="@+id/btn_invest"
             style="@style/CustomButton"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/invest"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewFund" />
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

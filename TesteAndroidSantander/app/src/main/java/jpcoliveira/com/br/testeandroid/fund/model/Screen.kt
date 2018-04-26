@@ -19,6 +19,6 @@ data class Screen(@SerializedName("riskTitle")
                   @SerializedName("fundName")
                   val fundName: String = "",
                   @SerializedName("moreInfo")
-                  val moreInfo: MoreInfo,
+                  val moreInfo: MoreInfo?,
                   @SerializedName("info")
                   val info: List<InfoItem>?)
