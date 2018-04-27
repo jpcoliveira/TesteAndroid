@@ -1,10 +1,12 @@
 package jpcoliveira.com.br.testeandroid.contact
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import jpcoliveira.com.br.testeandroid.R
 
 class ContactFragment : Fragment(), ContactContract.View {
@@ -25,5 +27,13 @@ class ContactFragment : Fragment(), ContactContract.View {
         super.onResume()
 
         presenter.buildForm()
+    }
+
+    override fun getContextFrag(): Context? {
+        return activity
+    }
+
+    override fun showLayout(build: LinearLayout?) {
+        TODO("not implemented") //add in view container
     }
 }
