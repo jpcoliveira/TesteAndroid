@@ -13,4 +13,9 @@
     <string name="in_year">No ano</string>
     <string name="twelve_months">12 meses</string>
     <string name="percent">%</string>
+    <string name="error">Desculpe, houve um erro!</string>
+    <string name="wait">Aguarde</string>
+    <string name="loading_information">carregando informações...</string>
+    <string name="no_internet_conection">Sem conexão com a internet!</string>
+    <string name="retry">Tentar novamente</string>
 </resources>

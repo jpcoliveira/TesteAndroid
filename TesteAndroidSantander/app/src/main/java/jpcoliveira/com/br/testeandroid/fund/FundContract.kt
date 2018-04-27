@@ -12,5 +12,8 @@ interface FundContract {
     interface View : BaseView<Presenter> {
         fun showFund(fund: Fund?)
         fun showMessageError(message: String?)
+        fun showProgress()
+        fun hideProgress()
+        fun noInternet()
     }
 }

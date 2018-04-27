@@ -31,6 +31,7 @@
             style="@style/Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 </LinearLayout>
