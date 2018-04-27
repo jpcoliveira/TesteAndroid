@@ -15,6 +15,7 @@
         <item name="tabSelectedTextColor">@android:color/white</item>
         <item name="tabTextAppearance">@android:style/TextAppearance.Widget.TabWidget</item>
         <item name="tabTextColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/dinpro_medium</item>
     </style>
 
     <!-- Style of toolbar-->
@@ -26,5 +27,20 @@
     <style name="CustomButton" parent="">
         <item name="android:background">@drawable/selector_button</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/dinpro_medium</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Widget.Button</item>
+    </style>
+
+    <!-- Fonts -->
+    <style name="Medium">
+        <item name="fontFamily">@font/dinpro_medium</item>
+    </style>
+
+    <style name="Regular">
+        <item name="fontFamily">@font/dinpro_regular</item>
+    </style>
+
+    <style name="Helvetica">
+        <item name="fontFamily">helvetica</item>
     </style>
 </resources>

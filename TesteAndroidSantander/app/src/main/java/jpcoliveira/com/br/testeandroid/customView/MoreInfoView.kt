@@ -28,6 +28,6 @@ class MoreInfoView(context: Context, attrs: AttributeSet) : LinearLayout(context
     }
 
     fun String.percent(): String {
-        return this.plus("%")
+        return this.plus(context.getString(R.string.percent))
     }
 }

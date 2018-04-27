@@ -7,10 +7,10 @@
 
     <TextView
         android:id="@+id/info_name"
+        style="@style/Regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Taxa Administração" />
+        android:layout_weight="1" />
 
 
     <LinearLayout
@@ -28,11 +28,9 @@
 
         <TextView
             android:id="@+id/info_data"
+            style="@style/Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0,50%"
             android:textAlignment="textEnd" />
-
-
     </LinearLayout>
 </LinearLayout>

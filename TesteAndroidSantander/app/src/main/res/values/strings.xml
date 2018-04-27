@@ -7,4 +7,10 @@
     <string name="share">compartilhar</string>
     <string name="download">Baixar</string>
     <string name="divider">divider</string>
+    <string name="fund">Fundo</string>
+    <string name="cdi">CDI</string>
+    <string name="in_month">No mês</string>
+    <string name="in_year">No ano</string>
+    <string name="twelve_months">12 meses</string>
+    <string name="percent">%</string>
 </resources>

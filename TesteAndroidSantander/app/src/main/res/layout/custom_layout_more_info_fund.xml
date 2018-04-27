@@ -7,6 +7,7 @@
 
     <TextView
         android:id="@+id/info_title"
+        style="@style/Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -19,23 +20,26 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5" />
 
         <TextView
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Fundo"
+            android:text="@string/fund"
             android:textAlignment="textEnd"
             android:textSize="14sp" />
 
         <TextView
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="CDI"
+            android:text="@string/cdi"
             android:textAlignment="textEnd"
             android:textSize="14sp" />
     </LinearLayout>
@@ -47,14 +51,16 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="No mês"
+            android:text="@string/in_month"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/more_info_fund_month"
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -64,6 +70,7 @@
 
         <TextView
             android:id="@+id/more_info_cdi_month"
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -79,14 +86,16 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="No ano"
+            android:text="@string/in_year"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/more_info_fund_year"
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -96,6 +105,7 @@
 
         <TextView
             android:id="@+id/more_info_cdi_year"
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -111,14 +121,16 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="12 meses"
+            android:text="@string/twelve_months"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/more_info_fund_months"
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -128,6 +140,7 @@
 
         <TextView
             android:id="@+id/more_info_cdi_months"
+            style="@style/Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"

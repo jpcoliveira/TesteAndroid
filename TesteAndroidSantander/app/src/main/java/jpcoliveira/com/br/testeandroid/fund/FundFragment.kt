@@ -26,6 +26,9 @@ class FundFragment : Fragment(), FundContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerViewFund.layoutManager = LinearLayoutManager(activity)
+        btn_invest.setOnClickListener({
+            Toast.makeText(activity, activity?.getString(R.string.invest), Toast.LENGTH_SHORT).show()
+        })
     }
 
     override fun setPresenter(presenter: FundContract.Presenter) {
