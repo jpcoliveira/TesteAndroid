@@ -20,4 +20,10 @@ class ContactFragment : Fragment(), ContactContract.View {
     override fun setPresenter(presenter: ContactContract.Presenter) {
         this.presenter = presenter
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        presenter.buildForm()
+    }
 }
