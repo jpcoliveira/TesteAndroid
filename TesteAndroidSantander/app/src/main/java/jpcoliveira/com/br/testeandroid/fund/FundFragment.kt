@@ -86,14 +86,13 @@ class FundFragment : Fragment(), FundContract.View {
         }
     }
 
-    override fun noInternet() {
+    override fun noInternetAvailable() {
         internet_unavailable.visibility = View.VISIBLE
         container_content.visibility = View.GONE
     }
 
     operator fun <T> List<T>.plus(list: List<T>): List<T> {
-        var mutable: MutableList<T>
-        mutable = this.toMutableList()
+        val mutable = toMutableList()
         mutable.addAll(list)
         return mutable
     }

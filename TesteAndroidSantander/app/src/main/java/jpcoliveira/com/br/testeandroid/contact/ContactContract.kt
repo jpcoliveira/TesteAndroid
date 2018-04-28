@@ -12,6 +12,6 @@ interface ContactContract {
 
     interface View : BaseView<Presenter> {
         fun getContextFrag(): Context?
-        fun showLayout(build: LinearLayout?)
+        fun showLayout(layout: LinearLayout?)
     }
 }

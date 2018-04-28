@@ -21,7 +21,7 @@ class FundPresenter(val repository: FundRepository?,
                 },
                 failure = { throwable ->
                     when (throwable) {
-                        is UnknownHostException -> view?.noInternet()
+                        is UnknownHostException -> view?.noInternetAvailable()
                         else -> view?.showMessageError(throwable?.message)
                     }
                     view?.hideProgress()
