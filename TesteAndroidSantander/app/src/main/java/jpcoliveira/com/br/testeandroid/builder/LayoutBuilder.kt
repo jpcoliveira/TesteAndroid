@@ -3,18 +3,20 @@ package jpcoliveira.com.br.testeandroid.builder
 import android.content.Context
 import android.content.res.Resources
 import android.support.design.widget.TextInputLayout
+import android.text.InputType
 import android.view.ContextThemeWrapper
 import android.view.Gravity
 import android.view.View
 import android.widget.*
 import jpcoliveira.com.br.testeandroid.R
+import jpcoliveira.com.br.testeandroid.contact.ContactContract
 import jpcoliveira.com.br.testeandroid.contact.model.CellsItem
 
 class LayoutBuilder(val context: Context?) {
 
     private var linearLayout: LinearLayout? = null
 
-    inner class Builder {
+    inner class Builder(val presenter: ContactContract.Presenter?) {
 
         fun buildContainer(): Builder? {
 
@@ -32,7 +34,7 @@ class LayoutBuilder(val context: Context?) {
             return this
         }
 
-        fun buildButton(item: CellsItem): Builder {
+        fun buildButton(item: CellsItem, items: List<CellsItem>): Builder {
 
             val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     context?.resources?.getDimension(R.dimen.default_48)?.toInt()!!)
@@ -44,6 +46,10 @@ class LayoutBuilder(val context: Context?) {
             button.text = item.message
             button.gravity = Gravity.CENTER
             button.isClickable = true
+
+            button.setOnClickListener({
+                presenter?.clickSendMessage(items)
+            })
 
             configureAndAddView(button, item, params)
             return this
@@ -68,7 +74,12 @@ class LayoutBuilder(val context: Context?) {
             val editText = EditText(context)
 
             editText.hint = item.message
+            editText.inputType = getInputType(item.typefield)
             textInputLayout.addView(editText)
+
+            editText.setOnFocusChangeListener({ view, b ->
+                textInputLayout.isErrorEnabled = false
+            })
 
             configureAndAddView(textInputLayout, item)
             return this
@@ -77,12 +88,17 @@ class LayoutBuilder(val context: Context?) {
         fun buildCheckbox(item: CellsItem): Builder {
 
             val style = R.style.CustomCheckbox
-
             val checkBox = CheckBox(ContextThemeWrapper(context, style), null, style)
 
             checkBox.text = item.message
             checkBox.gravity = Gravity.CENTER
-            checkBox.isClickable=true
+            checkBox.isClickable = true
+
+            checkBox.setOnCheckedChangeListener({ compoundButton, isChecked ->
+                linearLayout
+                        ?.findViewById<View>(item.show?.toInt()!!)
+                        ?.visibility = if (isChecked) View.VISIBLE else View.GONE
+            })
 
             configureAndAddView(checkBox, item)
             return this
@@ -118,6 +134,15 @@ class LayoutBuilder(val context: Context?) {
 
             linearLayout?.addView(view)
         }
+
+        private fun getInputType(type: String?) =
+                when (type) {
+                    TypeField.text.id -> InputType.TYPE_CLASS_TEXT
+                    TypeField.email.id -> InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                    TypeField.telnumber.name -> InputType.TYPE_CLASS_PHONE
+                    else -> InputType.TYPE_CLASS_TEXT
+                }
+
 
         fun build(): LinearLayout? {
             checkNotNull(linearLayout, { "linearlayout can not be null" })

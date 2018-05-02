@@ -3,15 +3,14 @@ package jpcoliveira.com.br.testeandroid.contact
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.TextInputLayout
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import jpcoliveira.com.br.testeandroid.R
-import jpcoliveira.com.br.testeandroid.fund.FundFragment
 import kotlinx.android.synthetic.main.fragment_contact.*
 
 class ContactFragment : Fragment(), ContactContract.View {
@@ -48,13 +47,46 @@ class ContactFragment : Fragment(), ContactContract.View {
         progress.cancel()
     }
 
+    override fun clickSendMessage() {
+        presenter?.sendMessage()
+    }
+
     override fun noInternetAvailable() {
 
     }
 
     override fun showMessageError(message: String?) {
-        Log.i(FundFragment.TAG, "showMessageError " + message)
         Toast.makeText(activity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun getTextById(id: Int?): String? {
+        return container_contact?.findViewById<TextInputLayout>(id!!)?.editText?.text?.toString()
+    }
+
+    override fun showErrorValidateEmail(resId: Int?) {
+        val editText = container_contact?.findViewById<TextInputLayout>(resId!!)
+        editText?.error = getString(R.string.invalid_mail)
+        editText?.isErrorEnabled = true
+    }
+
+    override fun showErrorValidatePhone(resId: Int?) {
+        val editText = container_contact?.findViewById<TextInputLayout>(resId!!)
+        editText?.error = getString(R.string.invalid_phone)
+        editText?.isErrorEnabled = true
+    }
+
+    override fun showErrorValidateText(resId: Int?) {
+        val editText = container_contact?.findViewById<TextInputLayout>(resId!!)
+        editText?.error = getString(R.string.required_field)
+        editText?.isErrorEnabled = true
+    }
+
+    override fun isEnable(resId: Int?): Boolean {
+        return container_contact?.findViewById<TextInputLayout>(resId!!)?.visibility == View.VISIBLE
+    }
+
+    override fun sendMessage() {
+        Toast.makeText(activity, "sendMessage", Toast.LENGTH_SHORT).show()
     }
 
     override fun getContextFrag(): Context? {
