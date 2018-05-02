@@ -1,7 +1,9 @@
 package jpcoliveira.com.br.testeandroid.builder
 
 import android.content.Context
+import android.content.res.Resources
 import android.support.design.widget.TextInputLayout
+import android.view.ContextThemeWrapper
 import android.view.Gravity
 import android.view.View
 import android.widget.*
@@ -21,6 +23,10 @@ class LayoutBuilder(val context: Context?) {
 
             linearLayout = LinearLayout(context)
             linearLayout?.orientation = LinearLayout.VERTICAL
+
+            params.marginStart = context?.resources?.getDimension(R.dimen.default_32)?.toInt()!!
+            params.marginEnd = context?.resources?.getDimension(R.dimen.default_32)?.toInt()!!
+
             linearLayout?.layoutParams = params
 
             return this
@@ -28,18 +34,26 @@ class LayoutBuilder(val context: Context?) {
 
         fun buildButton(item: CellsItem): Builder {
 
-            val button = Button(context)
+            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    context?.resources?.getDimension(R.dimen.default_48)?.toInt()!!)
+
+            val style = R.style.CustomButton
+
+            val button = Button(ContextThemeWrapper(context, style), null, style)
 
             button.text = item.message
             button.gravity = Gravity.CENTER
+            button.isClickable = true
 
-            configureAndAddView(button, item)
+            configureAndAddView(button, item, params)
             return this
         }
 
         fun buildTextView(item: CellsItem): Builder {
 
-            val textView = TextView(context)
+            val style = R.style.Regular16sp
+
+            val textView = TextView(ContextThemeWrapper(context, style), null, style)
 
             textView.text = item.message
             textView.gravity = Gravity.CENTER
@@ -61,10 +75,14 @@ class LayoutBuilder(val context: Context?) {
         }
 
         fun buildCheckbox(item: CellsItem): Builder {
-            val checkBox = CheckBox(context)
+
+            val style = R.style.CustomCheckbox
+
+            val checkBox = CheckBox(ContextThemeWrapper(context, style), null, style)
 
             checkBox.text = item.message
             checkBox.gravity = Gravity.CENTER
+            checkBox.isClickable=true
 
             configureAndAddView(checkBox, item)
             return this
@@ -80,23 +98,33 @@ class LayoutBuilder(val context: Context?) {
             return this
         }
 
-        private fun configureAndAddView(view: View?, item: CellsItem?) {
+        private fun configureAndAddView(view: View?,
+                                        item: CellsItem?,
+                                        params: LinearLayout.LayoutParams? = null) {
 
-            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT)
+            var layoutParams = params
 
-            params.topMargin = item?.topSpacing!!
-            params.gravity = Gravity.CENTER
+            if (layoutParams == null) {
+                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT)
+            }
+
+            layoutParams.topMargin = item?.topSpacing?.px!!
+            layoutParams.gravity = Gravity.CENTER
+
             view?.id = item.id!!
-            view?.layoutParams = params
+            view?.layoutParams = layoutParams
             view?.visibility = if (item.hidden!!) View.GONE else View.VISIBLE
 
             linearLayout?.addView(view)
         }
 
         fun build(): LinearLayout? {
-            if (linearLayout == null) throw NullPointerException("can not build without buildContainer")
+            checkNotNull(linearLayout, { "linearlayout can not be null" })
             return linearLayout
         }
     }
+
+    val Int.dp: Int get() = (this / Resources.getSystem().displayMetrics.density).toInt()
+    val Int.px: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 }

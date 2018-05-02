@@ -13,11 +13,10 @@ import android.widget.Toast
 import jpcoliveira.com.br.testeandroid.R
 import jpcoliveira.com.br.testeandroid.fund.FundFragment
 import kotlinx.android.synthetic.main.fragment_contact.*
-import kotlinx.android.synthetic.main.fragment_fund.*
 
 class ContactFragment : Fragment(), ContactContract.View {
 
-    private lateinit var presenter: ContactContract.Presenter
+    private var presenter: ContactContract.Presenter? = null
 
     private val progress by lazy {
         ProgressDialog(context)
@@ -33,11 +32,11 @@ class ContactFragment : Fragment(), ContactContract.View {
 
     override fun onResume() {
         super.onResume()
-        presenter.buildForm()
+        presenter?.buildForm()
     }
 
     override fun showLayout(layout: LinearLayout?) {
-        container_contact.removeAllViews()
+        container_contact?.removeAllViews()
         container_contact?.addView(layout)
     }
 

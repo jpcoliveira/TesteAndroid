@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#ffffff</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorPrimary">#969696</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#8b8b8b</color>
 
     <color name="santander_default">#DA0101</color>
     <color name="santander_opacity">#be140d</color>
