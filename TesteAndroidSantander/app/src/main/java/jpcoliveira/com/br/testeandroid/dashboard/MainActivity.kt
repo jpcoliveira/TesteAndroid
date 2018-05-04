@@ -1,9 +1,11 @@
-package jpcoliveira.com.br.testeandroid
+package jpcoliveira.com.br.testeandroid.dashboard
 
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import com.github.salomonbrys.kodein.KodeinAware
+import jpcoliveira.com.br.testeandroid.MyApplication
+import jpcoliveira.com.br.testeandroid.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), KodeinAware {

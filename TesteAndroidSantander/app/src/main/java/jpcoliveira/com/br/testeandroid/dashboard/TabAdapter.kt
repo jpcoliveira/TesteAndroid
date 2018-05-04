@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid
+package jpcoliveira.com.br.testeandroid.dashboard
 
 import android.content.Context
 import android.support.v4.app.Fragment
@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.newInstance
+import jpcoliveira.com.br.testeandroid.R
 import jpcoliveira.com.br.testeandroid.contact.ContactFragment
 import jpcoliveira.com.br.testeandroid.contact.ContactPresenter
 import jpcoliveira.com.br.testeandroid.fund.FundFragment
