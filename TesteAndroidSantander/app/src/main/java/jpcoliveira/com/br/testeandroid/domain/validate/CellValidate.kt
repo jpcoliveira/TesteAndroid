@@ -1,7 +1,11 @@
 package jpcoliveira.com.br.testeandroid.domain.validate
 
-interface CellValidate {
-    fun isValid(text: String): Boolean
+abstract class CellValidate(private val messageValidationError: String?) {
+    abstract fun validate(text: String)
+    abstract fun isValid(): Boolean
+    abstract fun applyMask(text: String, result: (String?) -> Unit)
+    open fun getMessageError(): String? {
+        return messageValidationError
+    }
 
-    fun applyMask(text: String, result: (String?) -> Unit)
 }

@@ -12,7 +12,6 @@ import jpcoliveira.com.br.testeandroid.R
 import jpcoliveira.com.br.testeandroid.contact.ContactContract
 import jpcoliveira.com.br.testeandroid.contact.model.CellsItem
 import jpcoliveira.com.br.testeandroid.custom.listener.CustomTextWatcher
-import jpcoliveira.com.br.testeandroid.domain.validate.CellValidate
 import jpcoliveira.com.br.testeandroid.domain.validate.EmailCellValidate
 import jpcoliveira.com.br.testeandroid.domain.validate.PhoneCellValidate
 import jpcoliveira.com.br.testeandroid.domain.validate.TextCellValidate
@@ -86,9 +85,9 @@ class LayoutBuilder(val context: Context?) {
                                 editText.setText(it)
                                 editText.setSelection(it!!.length)
                             },
-                            isValid = { isValid ->
+                            isValid = { isValid, textError ->
                                 textInputLayout.isErrorEnabled = !isValid!!
-                                textInputLayout.error = if (!isValid!!) "teste" else ""
+                                textInputLayout.error = textError
                             })
             )
 
@@ -156,14 +155,13 @@ class LayoutBuilder(val context: Context?) {
                     else -> InputType.TYPE_CLASS_TEXT
                 }
 
-        private fun getCellValidate(type: String?): CellValidate? {
-            when (type) {
-                TypeField.text.id -> return TextCellValidate()
-                TypeField.email.id -> return EmailCellValidate()
-                TypeField.telnumber.name -> return PhoneCellValidate()
-                else -> return TextCellValidate()
-            }
-        }
+        private fun getCellValidate(type: String?) =
+                when (type) {
+                    TypeField.text.id -> TextCellValidate(context?.getString(R.string.required_field))
+                    TypeField.email.id -> EmailCellValidate(context?.getString(R.string.invalid_mail))
+                    TypeField.telnumber.name -> PhoneCellValidate(context?.getString(R.string.invalid_phone))
+                    else -> TextCellValidate(context?.getString(R.string.required_field))
+                }
 
         fun build(): LinearLayout? {
             checkNotNull(linearLayout, { "linearlayout can not be null" })

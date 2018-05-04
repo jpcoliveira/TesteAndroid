@@ -3,17 +3,29 @@ package jpcoliveira.com.br.testeandroid.domain.validate
 import jpcoliveira.com.br.testeandroid.util.Constants
 import java.util.regex.Pattern
 
-class PhoneCellValidate : CellValidate {
+class PhoneCellValidate(messageValidationError: String?) : CellValidate(messageValidationError) {
 
     private var isUpdating: Boolean = false
     private var oldString: String? = ""
     private var mask = listOf("(##) ####-####", "(##) #####-####")
     private var maskCount = 0
+    private var isValid: Boolean = false
 
-    override fun isValid(text: String): Boolean {
+    override fun validate(text: String) {
         val pattern = Pattern.compile(Constants.PATTERN_PHONE)
         val matcher = pattern.matcher(text)
-        return matcher.matches()
+        isValid = matcher.matches()
+    }
+
+    override fun isValid(): Boolean {
+        return isValid
+    }
+
+    override fun getMessageError(): String? {
+        if (!isValid)
+            return super.getMessageError()
+
+        return ""
     }
 
     override fun applyMask(text: String, result: (String?) -> Unit) {
