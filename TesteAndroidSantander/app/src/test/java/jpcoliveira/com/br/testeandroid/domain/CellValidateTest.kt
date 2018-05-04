@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid
+package jpcoliveira.com.br.testeandroid.domain
 
 import jpcoliveira.com.br.testeandroid.domain.validate.EmailCellValidate
 import jpcoliveira.com.br.testeandroid.domain.validate.PhoneCellValidate

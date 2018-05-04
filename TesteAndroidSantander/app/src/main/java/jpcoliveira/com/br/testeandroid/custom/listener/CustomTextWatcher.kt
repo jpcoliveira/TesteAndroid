@@ -18,7 +18,6 @@ class CustomTextWatcher(val cellValidate: CellValidate?,
     }
 
     override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, count: Int) {
-        Log.i("teste", "text=" + text.toString() + " count=" + count)
         isValid(cellValidate?.isValid(text.toString()))
         cellValidate?.applyMask(
                 text.toString(),

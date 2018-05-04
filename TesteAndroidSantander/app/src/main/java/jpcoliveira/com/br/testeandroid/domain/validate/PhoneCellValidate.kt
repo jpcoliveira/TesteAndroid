@@ -18,19 +18,9 @@ class PhoneCellValidate : CellValidate {
 
     override fun applyMask(text: String, result: (String?) -> Unit) {
 
-        val textWithoutSpecialCharacter = replaceChars(text)
+        val textWithoutSpecialCharacter = replaceChars(text, Constants.PATTERN_REMOVE_SPECIAL_CHAR)
 
-//        setUpFlags(count, textWithoutSpecialCharacter)
-
-        /* if (count == 0) {
-             isUpdating = true
-         }
- */
-        if (isUpdating) {
-            oldString = textWithoutSpecialCharacter
-            isUpdating = false
-            return
-        }
+        if (shouldBreak(textWithoutSpecialCharacter)) return
 
         increaseOrDecreaseCounterByText(text)
 
@@ -63,16 +53,15 @@ class PhoneCellValidate : CellValidate {
         return textWithMask
     }
 
-    private fun setUpFlags(count: Int?, text: String) {
-
-        if (count == 0) {
-            isUpdating = true
-        }
+    private fun shouldBreak(text: String): Boolean {
 
         if (isUpdating) {
             oldString = text
             isUpdating = false
+            return true
         }
+
+        return false
     }
 
     private fun increaseOrDecreaseCounterByText(text: String) {
@@ -93,33 +82,21 @@ class PhoneCellValidate : CellValidate {
     }
 
     private fun textSizeIsGreaterThanCurrentMask(text: String): Boolean {
-        return (text.length >
-                mask[maskCount]
-                        .replace("(", "")
-                        .replace(")", "")
-                        .replace("-", "")
-                        .replace(" ", "")
-                        .length)
+        return (text.length > replaceChars(mask[maskCount], Constants.PATTERN_REMOVE_PARENTHESIS).length)
     }
 
     private fun textSizeIsLessThanCurrentMask(text: String): Boolean {
-        return (text.length <
-                mask[maskCount]
-                        .replace("(", "")
-                        .replace(")", "")
-                        .replace("-", "")
-                        .replace(" ", "")
-                        .length)
+        return (text.length < replaceChars(mask[maskCount], Constants.PATTERN_REMOVE_PARENTHESIS).length)
     }
 
     private fun maskCountIsLessOrEqualsMaskListSize(): Boolean {
         return maskCount + 1 <= (mask.size - 1)
     }
 
-    private fun replaceChars(text: String): String {
+    private fun replaceChars(text: String, regex: String): String {
 
         var result = text
-        val pattern = Pattern.compile(Constants.PATTERN_REMOVE_SPECIAL_CHAR)
+        val pattern = Pattern.compile(regex)
         val match = pattern.matcher(result)
 
         while (match.find()) {
