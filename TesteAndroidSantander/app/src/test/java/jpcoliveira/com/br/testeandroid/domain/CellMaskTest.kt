@@ -12,7 +12,7 @@ class CellMaskTest {
         val text = "1199999999"
         val textExpected = "(11) 9999-9999"
 
-        PhoneCellValidate().applyMask(text, result = {
+        PhoneCellValidate(INVALID_PHONE).applyMask(text, result = {
             assertEquals(textExpected, it)
         })
     }
@@ -23,7 +23,7 @@ class CellMaskTest {
         val text = "11999999999"
         val textExpected = "(11) 99999-9999"
 
-        PhoneCellValidate().applyMask(text, result = {
+        PhoneCellValidate(INVALID_PHONE).applyMask(text, result = {
             assertEquals(textExpected, it)
         })
     }
@@ -34,7 +34,7 @@ class CellMaskTest {
         val text = "119999999"
         val textExpected = "(11) 9999-9999"
 
-        PhoneCellValidate().applyMask(text, result = {
+        PhoneCellValidate(INVALID_PHONE).applyMask(text, result = {
             assertNotSame(textExpected, it)
         })
     }
@@ -45,8 +45,12 @@ class CellMaskTest {
         val text = "119999999"
         val textExpected = "(11) 99999-9999"
 
-        PhoneCellValidate().applyMask(text, result = {
+        PhoneCellValidate(INVALID_PHONE).applyMask(text, result = {
             assertNotSame(textExpected, it)
         })
+    }
+
+    companion object {
+        val INVALID_PHONE = "número inválido"
     }
 }
