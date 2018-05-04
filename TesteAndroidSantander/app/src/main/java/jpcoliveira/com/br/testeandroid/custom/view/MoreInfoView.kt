@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid.customView
+package jpcoliveira.com.br.testeandroid.custom.view
 
 import android.content.Context
 import android.util.AttributeSet

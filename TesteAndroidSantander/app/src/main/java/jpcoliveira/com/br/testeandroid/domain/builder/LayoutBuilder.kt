@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid.builder
+package jpcoliveira.com.br.testeandroid.domain.builder
 
 import android.content.Context
 import android.content.res.Resources
@@ -11,6 +11,11 @@ import android.widget.*
 import jpcoliveira.com.br.testeandroid.R
 import jpcoliveira.com.br.testeandroid.contact.ContactContract
 import jpcoliveira.com.br.testeandroid.contact.model.CellsItem
+import jpcoliveira.com.br.testeandroid.custom.listener.CustomTextWatcher
+import jpcoliveira.com.br.testeandroid.domain.validate.CellValidate
+import jpcoliveira.com.br.testeandroid.domain.validate.EmailCellValidate
+import jpcoliveira.com.br.testeandroid.domain.validate.PhoneCellValidate
+import jpcoliveira.com.br.testeandroid.domain.validate.TextCellValidate
 
 class LayoutBuilder(val context: Context?) {
 
@@ -75,11 +80,19 @@ class LayoutBuilder(val context: Context?) {
 
             editText.hint = item.message
             editText.inputType = getInputType(item.typefield)
-            textInputLayout.addView(editText)
+            editText.addTextChangedListener(
+                    CustomTextWatcher(getCellValidate(item.typefield),
+                            mask = {
+                                editText.setText(it)
+                                editText.setSelection(it!!.length)
+                            },
+                            isValid = { isValid ->
+                                textInputLayout.isErrorEnabled = !isValid!!
+                                textInputLayout.error = if (!isValid!!) "teste" else ""
+                            })
+            )
 
-            editText.setOnFocusChangeListener({ view, b ->
-                textInputLayout.isErrorEnabled = false
-            })
+            textInputLayout.addView(editText)
 
             configureAndAddView(textInputLayout, item)
             return this
@@ -143,6 +156,14 @@ class LayoutBuilder(val context: Context?) {
                     else -> InputType.TYPE_CLASS_TEXT
                 }
 
+        private fun getCellValidate(type: String?): CellValidate? {
+            when (type) {
+                TypeField.text.id -> return TextCellValidate()
+                TypeField.email.id -> return EmailCellValidate()
+                TypeField.telnumber.name -> return PhoneCellValidate()
+                else -> return TextCellValidate()
+            }
+        }
 
         fun build(): LinearLayout? {
             checkNotNull(linearLayout, { "linearlayout can not be null" })

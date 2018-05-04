@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid.builder
+package jpcoliveira.com.br.testeandroid.domain.builder
 
 import android.content.Context
 import android.widget.LinearLayout

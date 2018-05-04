@@ -59,30 +59,16 @@ class ContactFragment : Fragment(), ContactContract.View {
         Toast.makeText(activity, getString(R.string.error), Toast.LENGTH_SHORT).show()
     }
 
-    override fun getTextById(id: Int?): String? {
-        return container_contact?.findViewById<TextInputLayout>(id!!)?.editText?.text?.toString()
-    }
-
-    override fun showErrorValidateEmail(resId: Int?) {
-        val editText = container_contact?.findViewById<TextInputLayout>(resId!!)
-        editText?.error = getString(R.string.invalid_mail)
-        editText?.isErrorEnabled = true
-    }
-
-    override fun showErrorValidatePhone(resId: Int?) {
-        val editText = container_contact?.findViewById<TextInputLayout>(resId!!)
-        editText?.error = getString(R.string.invalid_phone)
-        editText?.isErrorEnabled = true
-    }
-
-    override fun showErrorValidateText(resId: Int?) {
-        val editText = container_contact?.findViewById<TextInputLayout>(resId!!)
-        editText?.error = getString(R.string.required_field)
-        editText?.isErrorEnabled = true
+    override fun getTextById(resId: Int?): String? {
+        return container_contact?.findViewById<TextInputLayout>(resId!!)?.editText?.text?.toString()
     }
 
     override fun isEnable(resId: Int?): Boolean {
-        return container_contact?.findViewById<TextInputLayout>(resId!!)?.visibility == View.VISIBLE
+        return container_contact?.findViewById<View>(resId!!)?.visibility == View.VISIBLE
+    }
+
+    override fun isFieldValidationError(resId: Int): Boolean {
+        return container_contact?.findViewById<TextInputLayout>(resId)?.isErrorEnabled!!
     }
 
     override fun sendMessage() {

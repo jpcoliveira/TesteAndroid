@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid.builder
+package jpcoliveira.com.br.testeandroid.domain.builder
 
 enum class Type(val id: Int) {
     field(1),

@@ -11,20 +11,15 @@ interface ContactContract {
         fun buildForm()
         fun clickSendMessage(items: List<CellsItem>)
         fun sendMessage()
-        fun showErrorValidateEmail(resId: Int?)
-        fun showErrorValidatePhone(resId: Int?)
-        fun showErrorValidateText(resId: Int?)
     }
 
     interface View : BaseView<Presenter> {
         fun getContextFrag(): Context?
         fun showLayout(layout: LinearLayout?)
         fun clickSendMessage()
-        fun getTextById(id: Int?): String?
-        fun showErrorValidateEmail(resId: Int?)
-        fun showErrorValidatePhone(resId: Int?)
-        fun showErrorValidateText(resId: Int?)
+        fun getTextById(resId: Int?): String?
         fun sendMessage()
-        fun isEnable(id: Int?): Boolean
+        fun isEnable(resId: Int?): Boolean
+        fun isFieldValidationError(resId: Int): Boolean
     }
 }

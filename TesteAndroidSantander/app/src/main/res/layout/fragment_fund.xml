@@ -135,7 +135,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/definition" />
 
-            <jpcoliveira.com.br.testeandroid.customView.RiskView
+            <jpcoliveira.com.br.testeandroid.custom.view.RiskView
                 android:id="@+id/risk"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/risk_title" />
 
-            <jpcoliveira.com.br.testeandroid.customView.MoreInfoView
+            <jpcoliveira.com.br.testeandroid.custom.view.MoreInfoView
                 android:id="@+id/more_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
