@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid.ui
+package jpcoliveira.com.br.testeandroid.dashboard
 
 import android.content.Context
 import android.support.v4.app.Fragment
