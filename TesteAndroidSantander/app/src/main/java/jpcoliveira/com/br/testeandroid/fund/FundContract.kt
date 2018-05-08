@@ -9,7 +9,8 @@ interface FundContract {
         fun getFund()
     }
 
-    interface View : BaseView<Presenter> {
+    interface View : BaseView {
+        fun setPresenter(presenter: Presenter)
         fun showFund(fund: Fund?)
     }
 }

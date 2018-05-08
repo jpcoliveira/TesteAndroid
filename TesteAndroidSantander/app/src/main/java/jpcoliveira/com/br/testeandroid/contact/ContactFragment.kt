@@ -1,28 +1,30 @@
 package jpcoliveira.com.br.testeandroid.contact
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.TextInputLayout
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import jpcoliveira.com.br.testeandroid.R
+import jpcoliveira.com.br.testeandroid.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_contact.*
+import kotlinx.android.synthetic.main.fragment_fund.*
+import kotlinx.android.synthetic.main.include_unavailable_connection.*
 
-class ContactFragment : Fragment(), ContactContract.View {
+class ContactFragment : BaseFragment(), ContactContract.View {
 
     private var presenter: ContactContract.Presenter? = null
 
-    private val progress by lazy {
-        ProgressDialog(context)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_contact, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btn_retry.setOnClickListener({ presenter?.buildForm() })
     }
 
     override fun setPresenter(presenter: ContactContract.Presenter) {
@@ -35,16 +37,12 @@ class ContactFragment : Fragment(), ContactContract.View {
     }
 
     override fun showLayout(layout: LinearLayout?) {
-        container_contact?.removeAllViews()
-        container_contact?.addView(layout)
-    }
-
-    override fun showProgress() {
-        progress.show()
-    }
-
-    override fun hideProgress() {
-        progress.cancel()
+        layout.let {
+            internet_unavailable?.visibility = View.GONE
+            container_content?.visibility = View.VISIBLE
+            container_contact?.removeAllViews()
+            container_contact?.addView(layout)
+        }
     }
 
     override fun clickSendMessage() {
@@ -52,11 +50,8 @@ class ContactFragment : Fragment(), ContactContract.View {
     }
 
     override fun noInternetAvailable() {
-
-    }
-
-    override fun showMessageError(message: String?) {
-        Toast.makeText(activity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+        super.noInternetAvailable()
+        container_content?.visibility = View.GONE
     }
 
     override fun getTextById(resId: Int?): String? {

@@ -1,23 +1,18 @@
 package jpcoliveira.com.br.testeandroid.fund
 
-import android.app.ProgressDialog
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import jpcoliveira.com.br.testeandroid.R
+import jpcoliveira.com.br.testeandroid.base.BaseFragment
 import jpcoliveira.com.br.testeandroid.fund.model.Fund
 import kotlinx.android.synthetic.main.fragment_fund.*
+import kotlinx.android.synthetic.main.include_unavailable_connection.*
 
-class FundFragment : Fragment(), FundContract.View {
+class FundFragment : BaseFragment(), FundContract.View {
 
     private var presenter: FundContract.Presenter? = null
-
-    private val progress by lazy {
-        ProgressDialog(context)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +32,6 @@ class FundFragment : Fragment(), FundContract.View {
         })
 
         btn_retry.setOnClickListener({ presenter?.getFund() })
-        configureProgress()
-    }
-
-    private fun configureProgress() {
-        progress.setTitle(getString(R.string.wait))
-        progress.setMessage(getString(R.string.loading_information))
-        progress.setCancelable(false)
     }
 
     override fun setPresenter(presenter: FundContract.Presenter) {
@@ -87,30 +75,7 @@ class FundFragment : Fragment(), FundContract.View {
     }
 
     override fun noInternetAvailable() {
-        internet_unavailable.visibility = View.VISIBLE
+        super.noInternetAvailable()
         container_content.visibility = View.GONE
-    }
-
-    operator fun <T> List<T>.plus(list: List<T>): List<T> {
-        val mutable = toMutableList()
-        mutable.addAll(list)
-        return mutable
-    }
-
-    override fun showMessageError(message: String?) {
-        Log.i(TAG, "showMessageError " + message)
-        Toast.makeText(activity, getString(R.string.error), Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showProgress() {
-        progress.show()
-    }
-
-    override fun hideProgress() {
-        progress.cancel()
-    }
-
-    companion object {
-        val TAG = FundFragment::class.java.simpleName
     }
 }

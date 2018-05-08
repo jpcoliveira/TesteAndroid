@@ -13,7 +13,8 @@ interface ContactContract {
         fun sendMessage()
     }
 
-    interface View : BaseView<Presenter> {
+    interface View : BaseView {
+        fun setPresenter(presenter: Presenter)
         fun getContextFrag(): Context?
         fun showLayout(layout: LinearLayout?)
         fun clickSendMessage()

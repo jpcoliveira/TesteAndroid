@@ -31,7 +31,7 @@ class LayoutBuilder(val context: Context?) {
             linearLayout?.orientation = LinearLayout.VERTICAL
 
             params.marginStart = context?.resources?.getDimension(R.dimen.default_32)?.toInt()!!
-            params.marginEnd = context?.resources?.getDimension(R.dimen.default_32)?.toInt()!!
+            params.marginEnd = context.resources?.getDimension(R.dimen.default_32)?.toInt()!!
 
             linearLayout?.layoutParams = params
 
@@ -106,7 +106,7 @@ class LayoutBuilder(val context: Context?) {
             checkBox.gravity = Gravity.CENTER
             checkBox.isClickable = true
 
-            checkBox.setOnCheckedChangeListener({ compoundButton, isChecked ->
+            checkBox.setOnCheckedChangeListener({ _, isChecked ->
                 linearLayout
                         ?.findViewById<View>(item.show?.toInt()!!)
                         ?.visibility = if (isChecked) View.VISIBLE else View.GONE
