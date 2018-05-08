@@ -10,13 +10,19 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+var BASE_URL = BuildConfig.BASE_URL
+
 val apiModule = Kodein.Module {
-    bind<Retrofit>() with singleton {
+    bind<Retrofit.Builder>() with singleton {
         Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
+                .baseUrl(BASE_URL)
                 .client(OkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
-                .build()
+    }
+
+    bind<Retrofit>() with singleton {
+        val builder: Retrofit.Builder = instance()
+        builder.build()
     }
 
     bind<Api>() with singleton {
