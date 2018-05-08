@@ -1,4 +1,4 @@
-package jpcoliveira.com.br.testeandroid.dashboard
+package jpcoliveira.com.br.testeandroid.ui
 
 import android.os.Bundle
 import android.support.v4.view.ViewPager

@@ -1,9 +1,8 @@
-package jpcoliveira.com.br.testeandroid.dashboard
+package jpcoliveira.com.br.testeandroid.ui
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.matcher.ViewMatchers.withContentDescription
-import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import org.junit.Rule
@@ -11,7 +10,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class TestTest {
+class FundTest {
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
@@ -23,7 +22,5 @@ class TestTest {
 
         onView(withContentDescription("compartilhar")).perform(click())
 
-        /*onView(withId(R.id.weatherDescription))
-                .check(matches(isAssignableFrom(TextView::class.java)))*/
     }
 }
