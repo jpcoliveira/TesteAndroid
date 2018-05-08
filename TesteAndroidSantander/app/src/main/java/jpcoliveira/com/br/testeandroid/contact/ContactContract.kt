@@ -22,5 +22,6 @@ interface ContactContract {
         fun sendMessage()
         fun isEnable(resId: Int?): Boolean
         fun isFieldValidationError(resId: Int): Boolean
+        fun showMessageErrorValidation(resId: Int?, message: String?)
     }
 }

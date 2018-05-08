@@ -64,7 +64,14 @@ class ContactFragment : BaseFragment(), ContactContract.View {
     }
 
     override fun isFieldValidationError(resId: Int): Boolean {
-        return container_contact?.findViewById<TextInputLayout>(resId)?.isErrorEnabled!!
+        return container_contact?.findViewById<TextInputLayout>(resId)?.isErrorEnabled!! && isEnable(resId)
+    }
+
+    override fun showMessageErrorValidation(resId: Int?, message: String?) {
+        message.let {
+            container_contact?.findViewById<TextInputLayout>(resId!!)?.isErrorEnabled = true
+            container_contact?.findViewById<TextInputLayout>(resId!!)?.error = message
+        }
     }
 
     override fun sendMessage() {

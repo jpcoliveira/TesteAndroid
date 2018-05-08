@@ -92,6 +92,7 @@ class LayoutBuilder(val context: Context?) {
             )
 
             textInputLayout.addView(editText)
+            textInputLayout.isErrorEnabled = true
 
             configureAndAddView(textInputLayout, item)
             return this
