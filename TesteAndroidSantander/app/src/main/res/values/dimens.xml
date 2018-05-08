@@ -10,6 +10,7 @@
     <dimen name="risk_margin">2dp</dimen>
     <dimen name="default_elevation">4dp</dimen>
 
+    <dimen name="font_size_32">32sp</dimen>
     <dimen name="large_font_size">28sp</dimen>
     <dimen name="middle_font_size">16sp</dimen>
     <dimen name="small_font_size">14sp</dimen>

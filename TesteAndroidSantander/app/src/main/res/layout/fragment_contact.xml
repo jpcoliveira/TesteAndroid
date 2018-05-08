@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <include layout="@layout/include_unavailable_connection" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/container_contact"
@@ -16,6 +16,47 @@
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
             android:orientation="vertical"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </ScrollView>
-</LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/send_new_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/thanks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/thanks"
+            android:textSize="@dimen/middle_font_size" />
+
+        <TextView
+            android:id="@+id/msg_send_success"
+            style="@style/Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thanks"
+            android:gravity="center"
+            android:text="@string/send_success"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_size_32" />
+
+        <TextView
+            android:id="@+id/btn_send_new_message"
+            style="@style/Helvetica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/msg_send_success"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:text="@string/send_new_message"
+            android:textColor="@color/santander_default"
+            android:textSize="@dimen/middle_font_size" />
+
+    </RelativeLayout>
+</RelativeLayout>

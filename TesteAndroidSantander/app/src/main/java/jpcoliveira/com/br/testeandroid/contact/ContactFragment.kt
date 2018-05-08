@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import jpcoliveira.com.br.testeandroid.R
 import jpcoliveira.com.br.testeandroid.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_contact.*
-import kotlinx.android.synthetic.main.fragment_fund.*
 import kotlinx.android.synthetic.main.include_unavailable_connection.*
 
 class ContactFragment : BaseFragment(), ContactContract.View {
@@ -24,7 +22,8 @@ class ContactFragment : BaseFragment(), ContactContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_retry.setOnClickListener({ presenter?.buildForm() })
+        btn_retry.setOnClickListener { presenter?.buildForm() }
+        btn_send_new_message.setOnClickListener { presenter?.buildForm() }
     }
 
     override fun setPresenter(presenter: ContactContract.Presenter) {
@@ -38,10 +37,11 @@ class ContactFragment : BaseFragment(), ContactContract.View {
 
     override fun showLayout(layout: LinearLayout?) {
         layout.let {
-            internet_unavailable?.visibility = View.GONE
-            container_content?.visibility = View.VISIBLE
             container_contact?.removeAllViews()
             container_contact?.addView(layout)
+            internet_unavailable?.visibility = View.GONE
+            send_new_message.visibility = View.GONE
+            container_contact?.visibility = View.VISIBLE
         }
     }
 
@@ -51,7 +51,8 @@ class ContactFragment : BaseFragment(), ContactContract.View {
 
     override fun noInternetAvailable() {
         super.noInternetAvailable()
-        container_content?.visibility = View.GONE
+        container_contact?.visibility = View.GONE
+        send_new_message.visibility = View.GONE
     }
 
     override fun getTextById(resId: Int?): String? {
@@ -67,7 +68,9 @@ class ContactFragment : BaseFragment(), ContactContract.View {
     }
 
     override fun sendMessage() {
-        Toast.makeText(activity, "sendMessage", Toast.LENGTH_SHORT).show()
+        send_new_message.visibility = View.VISIBLE
+        container_contact.visibility = View.GONE
+        internet_unavailable.visibility = View.GONE
     }
 
     override fun getContextFrag(): Context? {

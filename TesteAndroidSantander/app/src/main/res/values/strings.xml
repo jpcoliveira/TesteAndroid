@@ -21,4 +21,7 @@
     <string name="invalid_phone">Telefone inválido!</string>
     <string name="required_field">Campo obrigatório!</string>
     <string name="invalid_mail">E-mail inválido!</string>
+    <string name="thanks">Obrigado!</string>
+    <string name="send_success">Mensagem enviada com sucesso :)</string>
+    <string name="send_new_message">Enviar nova mensagem</string>
 </resources>
