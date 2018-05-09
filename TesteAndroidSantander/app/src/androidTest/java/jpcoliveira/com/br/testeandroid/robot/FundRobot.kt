@@ -18,7 +18,7 @@ import okhttp3.mockwebserver.RecordedRequest
 import org.hamcrest.Matchers.allOf
 import retrofit2.Retrofit
 
-class FundRobot(val server: MockWebServer, val rule: ActivityTestRule<MainActivity>) {
+class FundRobot(val server: MockWebServer, val rule: ActivityTestRule<MainActivity>?) {
 
     val dispatcher = object : Dispatcher() {
         override fun dispatch(request: RecordedRequest?): MockResponse {
@@ -35,13 +35,8 @@ class FundRobot(val server: MockWebServer, val rule: ActivityTestRule<MainActivi
     }
 
     fun prepare(): FundRobot {
-        Thread.sleep(2000L)
-        val builder: Retrofit.Builder
-        builder = rule.activity.kodein.instanceOrNull<Retrofit.Builder>()!!
-        server.setDispatcher(dispatcher)
-        server.start()
-        builder.baseUrl(server.url("/").toString())
-        builder.build()
+        Thread.sleep(3000L)
+
         return this
     }
 
