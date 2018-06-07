@@ -77,11 +77,11 @@ class PhoneCellValidate(messageValidationError: String?) : CellValidate(messageV
     }
 
     private fun increaseOrDecreaseCounterByText(text: String) {
-        if (textSizeIsGreaterThanCurrentMask(text)
+        if (textSizeIsLessThanCurrentMask(text)) {
+            maskCount = 0
+        } else if (textSizeIsGreaterThanCurrentMask(text)
                 && maskCountIsLessOrEqualsMaskListSize()) {
             maskCount++
-        } else if (textSizeIsLessThanCurrentMask(text)) {
-            maskCount = 0
         }
     }
 
@@ -98,11 +98,12 @@ class PhoneCellValidate(messageValidationError: String?) : CellValidate(messageV
     }
 
     private fun textSizeIsLessThanCurrentMask(text: String): Boolean {
-        return (text.length < replaceChars(mask[maskCount], Constants.PATTERN_REMOVE_PARENTHESIS).length)
+        return replaceChars(text, Constants.PATTERN_REMOVE_PARENTHESIS)
+                .length <= replaceChars(mask[maskCount], Constants.PATTERN_REMOVE_PARENTHESIS).length
     }
 
     private fun maskCountIsLessOrEqualsMaskListSize(): Boolean {
-        return maskCount + 1 <= (mask.size - 1)
+        return maskCount < (mask.size - 1)
     }
 
     private fun replaceChars(text: String, regex: String): String {
