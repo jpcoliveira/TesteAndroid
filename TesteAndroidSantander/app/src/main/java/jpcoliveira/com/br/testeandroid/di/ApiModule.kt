@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 var BASE_URL = BuildConfig.BASE_URL
 
-val apiModule = Kodein.Module {
+val apiModule = Kodein.Module(allowSilentOverride = true) {
     bind<Retrofit.Builder>() with singleton {
         Retrofit.Builder()
                 .baseUrl(BASE_URL)
